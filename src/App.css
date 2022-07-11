@@ -110,10 +110,6 @@ body {
 		height: 300px;
 	}
 
-	.react-horizontal-scrolling-menu--scroll-container {
-		width: 500px;
-	}
-
 	.left-arrow,
 	.right-arrow {
 		position: static !important;
