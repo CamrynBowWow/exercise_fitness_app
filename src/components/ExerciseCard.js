@@ -12,7 +12,7 @@ const BodyPartButton = styled(Button)({
 	borderRadius: '20px',
 	textTransform: 'capitalize',
 	'&:hover': {
-		backgroundColor: '#F19393',
+		backgroundColor: '#F16969',
 	},
 });
 
@@ -33,14 +33,8 @@ const ExerciseCard = ({ exercise }) => {
 		<Link className='exercise-card' to={`/exercise/${exercise.id}`}>
 			<img src={exercise.gifUrl} alt={exercise.name} loading='lazy' />
 			<Stack direction='row'>
-				{/* <Button sx={{ ml: '21px', color: '#FFF', background: '#FFA9A9', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
-					{exercise.bodyPart}
-				</Button> */}
-				<BodyPartButton>{exercise.bodyPart}</BodyPartButton>
-				<TargetButton>{exercise.target}</TargetButton>
-				{/* <Button sx={{ ml: '21px', color: '#FFF', background: '#FCC757', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
-					{exercise.target}
-				</Button> */}
+				<BodyPartButton variant='contained'>{exercise.bodyPart}</BodyPartButton>
+				<TargetButton variant='contained'>{exercise.target}</TargetButton>
 			</Stack>
 			<Typography ml='21px' color='#000' fontWeight='bold' mt='11px' pb='10px' textTransform='capitalize' fontSize='22px'>
 				{exercise.name}

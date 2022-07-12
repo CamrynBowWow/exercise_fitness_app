@@ -1,8 +1,20 @@
 import React from 'react';
 import { Typography, Stack, Button } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import BodyPartImage from '../assets/icons/body-part.png';
 import TargetImage from '../assets/icons/target.png';
 import EquipmentImage from '../assets/icons/equipment.png';
+
+const ExerciseIconButton = styled(Button)({
+	backgroundColor: '#F6DDB1',
+	borderRadius: '50%',
+	width: '100px',
+	height: '100px',
+	cursor: 'default',
+	'&:hover': {
+		backgroundColor: '#F6DDB1',
+	},
+});
 
 const Detail = ({ exerciseDetail }) => {
 	const { bodyPart, gifUrl, name, target, equipment } = exerciseDetail;
@@ -24,9 +36,9 @@ const Detail = ({ exerciseDetail }) => {
 				</Typography>
 				{extraDetail.map((item) => (
 					<Stack key={item.name} direction='row' gap='24px' alignItems='center'>
-						<Button sx={{ background: '#FFF2db', borderRadius: '50%', width: '100px', height: '100px' }}>
+						<ExerciseIconButton variant='contained'>
 							<img src={item.icon} alt={bodyPart} style={{ width: '50px', height: '50px' }} />
-						</Button>
+						</ExerciseIconButton>
 						<Typography textTransform='capitalize' variant='h5'>
 							{item.name}
 						</Typography>
