@@ -32,6 +32,7 @@ const Exercises = ({ bodyPart, setExercises, exercises }) => {
 			}
 
 			setExercises(exercisesData);
+			setCurrentPage(1);
 		};
 
 		fetchExercisesData();
