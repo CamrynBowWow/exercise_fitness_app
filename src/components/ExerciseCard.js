@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Button, Stack, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-// Could put in variant contained to make look different
 const BodyPartButton = styled(Button)({
 	marginLeft: '21px',
 	color: '#FFF',

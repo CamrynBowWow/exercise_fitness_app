@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Pagination from '@mui/material/Pagination';
 import { Box, Stack, Typography } from '@mui/material';
 
 import { exerciseOptions, fetchData } from '../utils/fetchData';
 import ExerciseCard from './ExerciseCard';
+import Loader from './Loader';
 
 const Exercises = ({ bodyPart, setExercises, exercises }) => {
 	const [currentPage, setCurrentPage] = useState(1);
-	const exercisesPerPage = 9;
+	const exercisesPerPage = 8;
+	let myRef = useRef();
 
 	const indexOfLastExercise = currentPage * exercisesPerPage;
 	const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
@@ -16,8 +18,7 @@ const Exercises = ({ bodyPart, setExercises, exercises }) => {
 	const paginate = (e, value) => {
 		setCurrentPage(value);
 
-		// Must work on this to set it so it doesn't scroll to far when page is small
-		window.scrollTo({ top: 1800, behavior: 'smooth' });
+		window.scrollTo({ top: myRef.current.offsetTop, behavior: 'smooth' });
 	};
 
 	useEffect(() => {
@@ -37,17 +38,15 @@ const Exercises = ({ bodyPart, setExercises, exercises }) => {
 	}, [bodyPart]);
 
 	return (
-		<Box id='exercises' sx={{ mt: { lg: '110px' } }} mt='50px' p='20px'>
+		<Box ref={myRef} id='exercises' sx={{ mt: { lg: '110px' } }} mt='50px' p='20px'>
 			<Typography variant='h3' mb='46px'>
 				Showing Results
 			</Typography>
 			<Stack direction='row' sx={{ gap: { lg: '110px', xs: '50px' } }} flexWrap='wrap' justifyContent='center'>
-				{currentExercises.map((exercise, index) => (
-					<ExerciseCard key={index} exercise={exercise} />
-				))}
+				{currentExercises.length ? currentExercises.map((exercise, index) => <ExerciseCard key={index} exercise={exercise} />) : <Loader />}
 			</Stack>
 			<Stack mt='100px' alignItems='center'>
-				{exercises.length > 9 && (
+				{exercises.length > 8 && (
 					<Pagination
 						color='standard'
 						shape='rounded'
