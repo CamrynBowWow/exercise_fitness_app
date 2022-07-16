@@ -8,7 +8,7 @@ import Loader from './Loader';
 
 const Exercises = ({ bodyPart, setExercises, exercises }) => {
 	const [currentPage, setCurrentPage] = useState(1);
-	const exercisesPerPage = 8;
+	const exercisesPerPage = 9;
 	let myRef = useRef();
 
 	const indexOfLastExercise = currentPage * exercisesPerPage;
@@ -47,7 +47,7 @@ const Exercises = ({ bodyPart, setExercises, exercises }) => {
 				{currentExercises.length ? currentExercises.map((exercise, index) => <ExerciseCard key={index} exercise={exercise} />) : <Loader />}
 			</Stack>
 			<Stack mt='100px' alignItems='center'>
-				{exercises.length > 8 && (
+				{exercises.length > 9 && (
 					<Pagination
 						color='standard'
 						shape='rounded'
