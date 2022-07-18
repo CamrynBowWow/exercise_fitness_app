@@ -15,7 +15,13 @@ export const youtubeOptions = {
 };
 
 export const fetchData = async (url, options) => {
-	const response = await fetch(url, options);
+	const response = {};
+	try {
+		response = await fetch(url, options);
+	} catch (error) {
+		const mistake = ['API expired'];
+		return mistake;
+	}
 	const data = await response.json();
 
 	return data;
