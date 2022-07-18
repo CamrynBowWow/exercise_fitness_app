@@ -21,6 +21,7 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => {
 			}}
 			onClick={() => {
 				setBodyPart(item);
+				// TODO fix this scrollTo by using useRef
 				window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' });
 			}}
 		>

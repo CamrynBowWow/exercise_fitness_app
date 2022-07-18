@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Pagination from '@mui/material/Pagination';
 import { Box, Stack, Typography } from '@mui/material';
-
 import { exerciseOptions, fetchData } from '../utils/fetchData';
 import ExerciseCard from './ExerciseCard';
 import Loader from './Loader';
+import DisplayApiExpired from './DisplayApiExpired';
 
 const Exercises = ({ bodyPart, setExercises, exercises }) => {
 	const [currentPage, setCurrentPage] = useState(1);
@@ -44,7 +44,13 @@ const Exercises = ({ bodyPart, setExercises, exercises }) => {
 				Showing Results
 			</Typography>
 			<Stack direction='row' sx={{ gap: { lg: '110px', xs: '50px' } }} flexWrap='wrap' justifyContent='center'>
-				{currentExercises.length ? currentExercises.map((exercise, index) => <ExerciseCard key={index} exercise={exercise} />) : <Loader />}
+				{currentExercises[0] === 'API expired' ? (
+					<DisplayApiExpired />
+				) : currentExercises.length ? (
+					currentExercises.map((exercise, index) => <ExerciseCard key={index} exercise={exercise} />)
+				) : (
+					<Loader />
+				)}
 			</Stack>
 			<Stack mt='100px' alignItems='center'>
 				{exercises.length > 9 && (
