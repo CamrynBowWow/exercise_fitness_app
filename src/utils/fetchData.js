@@ -15,7 +15,7 @@ export const youtubeOptions = {
 };
 
 export const fetchData = async (url, options) => {
-	const response = {};
+	let response = {};
 	try {
 		response = await fetch(url, options);
 	} catch (error) {
